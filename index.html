@@ -185,15 +185,15 @@
     <h1 id="greeting"></h1>
 
     <div id="buttons">
-        <button onclick="webviewExpand();">Expand Webview</button>
+        <button onclick="webviewExpand();">Expandir Vista Web</button>
         <small>(La ventana pasa a pantalla completa)</small>
-        <button onclick="toggleMainButton(this);">Hide Main Button</button>
+        <button onclick="toggleMainButton(this);">Ocultar botón principal</button>
         <small>(Oculta/muestra botón principal)</small>
-        <button id="btnTime" onclick="sendTime(10);">Send time</button>
+        <button id="btnTime" onclick="sendTime(10);">Hora de envío</button>
         <small>(El bot recibirá un mensaje con relleno <code>web_app_data</code> field)</small>
     </div>
 
-    <h3>Test links</h3>
+    <h3>Test de Enlaces</h3>
     <ul>
         <li><a href="?nextpage=1">Regular link #1</a> (abre dentro de la vista web)</li>
         <li><a href="https://telegram.org/" target="_blank">target="_blank" link</a> (abre fuera de la vista web)</li>
@@ -202,7 +202,7 @@
         <li><a href="tg://resolve?domain=vote">VoteBot tg:// link</a> (no se abre)</li>
     </ul>
 
-    <h3>Test permissions</h3>
+    <h3>Test de Permisos</h3>
     <ul>
         <li>
             <a href="javascript:;" onclick="return requestLocation();">Solicitar ubicación</a>
@@ -296,7 +296,7 @@
     function requestAudio() {
         if (navigator.mediaDevices) {
             navigator.mediaDevices.getUserMedia({ audio: true, video: false }).then(function(stream) {
-                document.querySelector('#audioData').innerHTML = '(Access granted)';
+                document.querySelector('#audioData').innerHTML = '(Acceso permitido)';
             });
         } else {
             document.querySelector('#audioData').innerHTML = '(Multimedia no compatibles con este navegador)';
