@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="utf-8">
     <meta name="viewport"
@@ -188,33 +188,32 @@
         <button onclick="webviewExpand();">Expand Webview</button>
         <small>(La ventana pasa a pantalla completa)</small>
         <button onclick="toggleMainButton(this);">Hide Main Button</button>
-        <small>(It hides/shows main button)</small>
+        <small>(Oculta/muestra botón principal)</small>
         <button id="btnTime" onclick="sendTime(10);">Send time</button>
-        <small>(The bot will recieve a message with filled <code>web_app_data</code> field)</small>
+        <small>(El bot recibirá un mensaje con relleno <code>web_app_data</code> field)</small>
     </div>
 
     <h3>Test links</h3>
     <ul>
-        <li><a href="?nextpage=1">Regular link #1</a> (opens inside webview)</li>
-        <li><a href="https://telegram.org/" target="_blank">target="_blank" link</a> (opens outside webview)</li>
-        <li><a href="javascript:window.open('https://telegram.org/');">window.open() link</a> (opens outside
-            webview)</li>
-        <li><a href="https://t.me/like">LikeBot t.me link</a> (opens inside Telegram app)</li>
-        <li><a href="tg://resolve?domain=vote">VoteBot tg:// link</a> (does not open)</li>
+        <li><a href="?nextpage=1">Regular link #1</a> (abre dentro de la vista web)</li>
+        <li><a href="https://telegram.org/" target="_blank">target="_blank" link</a> (abre fuera de la vista web)</li>
+        <li><a href="javascript:window.open('https://telegram.org/');">window.open() link</a> (abre fuera de la vista web)</li>
+        <li><a href="https://t.me/like">LikeBot t.me link</a> (abre dentro de la aplicación Telegram)</li>
+        <li><a href="tg://resolve?domain=vote">VoteBot tg:// link</a> (no se abre)</li>
     </ul>
 
     <h3>Test permissions</h3>
     <ul>
         <li>
-            <a href="javascript:;" onclick="return requestLocation();">Request Location</a>
+            <a href="javascript:;" onclick="return requestLocation();">Solicitar ubicación</a>
             <span id="locationData"></span>
         </li>
         <li>
-            <a href="javascript:;" onclick="return requestVideo();">Request Video</a>
+            <a href="javascript:;" onclick="return requestVideo();">Solicitar vídeo</a>
             <span id="videoData"></span>
         </li>
         <li>
-            <a href="javascript:;" onclick="return requestAudio();">Request Audio</a>
+            <a href="javascript:;" onclick="return requestAudio();">Solicitar Audio</a>
             <span id="audioData"></span>
         </li>
     </ul>
@@ -231,7 +230,7 @@
     const initData = Telegram.WebApp.initData || '';
     const initDataUnsafe = Telegram.WebApp.initDataUnsafe || {};
 
-    document.querySelector('#greeting').innerHTML = `Hi, ${initDataUnsafe.user.first_name}!`;
+    document.querySelector('#greeting').innerHTML = `Hola, ${initDataUnsafe.user.first_name}!`;
     document.querySelector('#initData').innerHTML = JSON.stringify(initData, null, 2);
     document.querySelector('#initDataUnsafe').innerHTML = JSON.stringify(initDataUnsafe, null, 2);
     document.querySelector('#themeData').html(JSON.stringify(Telegram.WebApp.themeParams, null, 2));
@@ -249,10 +248,10 @@
         const mainButton = Telegram.WebApp.MainButton;
         if (mainButton.isVisible) {
             mainButton.hide();
-            el.innerHTML = 'Show Main Button';
+            el.innerHTML = 'Mostrar botón principal';
         } else {
             mainButton.show();
-            el.innerHTML = 'Hide Main Button';
+            el.innerHTML = 'Ocultar botón principal';
         }
     }
 
@@ -277,7 +276,7 @@
                 document.querySelector('#locationData').innerHTML = '(' + position.coords.latitude + ', ' + position.coords.longitude + ')';
             });
         } else {
-            document.querySelector('#locationData').innerHTML = '(Geolocation is not supported in this browser)';
+            document.querySelector('#locationData').innerHTML = '(Geolocalización no es compatible con este navegador)';
         }
 
         return false;
@@ -286,10 +285,10 @@
     function requestVideo() {
         if (navigator.mediaDevices) {
             navigator.mediaDevices.getUserMedia({ audio: false, video: true }).then(function(stream) {
-                document.querySelector('#videoData').innerHTML = '(Access granted)';
+                document.querySelector('#videoData').innerHTML = '(Acceso permitido)';
             });
         } else {
-            document.querySelector('#videoData').innerHTML = '(Media devices is not supported in this browser)';
+            document.querySelector('#videoData').innerHTML = '(Multimedia no compatibles con este navegador)';
         }
         return false;
     }
@@ -300,7 +299,7 @@
                 document.querySelector('#audioData').innerHTML = '(Access granted)';
             });
         } else {
-            document.querySelector('#audioData').innerHTML = '(Media devices is not supported in this browser)';
+            document.querySelector('#audioData').innerHTML = '(Multimedia no compatibles con este navegador)';
         }
         return false;
     }
